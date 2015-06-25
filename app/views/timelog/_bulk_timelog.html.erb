@@ -1,0 +1,21 @@
+<p><%= form.check_box("date_range", options={}, checked_value="1", unchecked_value="0") %></p>
+<div id="time_entry_spent_to" style="display:none">
+  <p><%= form.text_field :spent_to, :size => 10 %><%= calendar_for('time_entry_spent_to') %></p>
+</div>
+
+<script type="text/javascript">
+  var checkbox = document.getElementById('time_entry_date_range');
+  var details_div = document.getElementById('time_entry_spent_to');
+  checkbox.onchange = function() {
+     if(this.checked) {
+       details_div.style['display'] = 'flex';
+     } else {
+       details_div.style['display'] = 'none';
+     }
+  };
+</script>
+
+<!--
+<% content_for :header_tags do %>
+  <%= javascript_include_tag 'date_range.js', :plugin => 'redmine_bulk_time_entries' %>
+<% end %> -->

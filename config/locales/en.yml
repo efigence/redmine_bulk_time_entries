@@ -1,0 +1,5 @@
+# English strings go here for Rails i18n
+en:
+  # my_label: "My label"
+  field_date_range: Date range
+  field_spent_to: Date to
