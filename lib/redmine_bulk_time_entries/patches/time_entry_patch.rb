@@ -5,17 +5,30 @@ module RedmineBulkTimeEntries
         base.class_eval do
           unloadable
 
-          attr_accessor :date_range
+          attr_accessor :time_range
+          attr_accessor :spent_to
 
           validate :spent_to_cannot_be_before_spent_on
-          before_save :calculate_timelog_for_date_range
-
-          safe_attributes 'spent_to'
+          after_save :create_time_entries_for_date_range
 
           def spent_to_cannot_be_before_spent_on
+            errors.add(:spent_to, "should be later than beginning date") if
+            spent_to && spent_to < spent_on
           end
 
-          def calculate_timelog_for_date_range
+          def create_time_entries_for_date_range
+            if self.spent_to
+              self.spent_on += 1.day
+              while self.spent_on <= self.spent_to
+                if !self.spent_on.saturday? && !self.spent_on.sunday?
+                  t = self.dup
+                  t.spent_on = self.spent_on
+                  t.spent_to = nil
+                  t.save
+                end
+                self.spent_on += 1.day
+              end
+            end
           end
 
         end
