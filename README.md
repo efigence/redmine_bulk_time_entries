@@ -1,6 +1,6 @@
-# Redmine Bulk Time Entries plugin (work in progress - do not use)
+# Redmine Bulk Time Entries plugin [![Build Status](https://travis-ci.org/efigence/redmine_bulk_time_entries.svg?branch=master)](https://travis-ci.org/efigence/redmine_bulk_time_entries)
 
-#### Plugin which enables registering bulk time entries.
+#### Plugin which enables registering bulk time entries for a chosen time range.
 
 ## Requirements
 
@@ -16,7 +16,7 @@ Developed and tested on Redmine 3.0.3.
 
 ## Usage
 
-* In case of longer periods of absence user does not have to complete timelog day by day - it is possible to choose a range and automatically fill in the hours for each day between these two dates
+In case of longer periods of absence user does not have to complete timelog day by day - it is possible to choose a time range and automatically fill in the same amount of hours for each day between these two dates.
 
 
 ## License
