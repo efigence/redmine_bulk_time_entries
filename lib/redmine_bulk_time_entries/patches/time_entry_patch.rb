@@ -18,7 +18,7 @@ module RedmineBulkTimeEntries
 
           def spent_to_cannot_be_before_spent_on
             errors.add(:spent_to, "should be later than Date") if
-            spent_to && spent_to < spent_on
+            spent_to && spent_on && spent_to < spent_on
           end
 
           def create_time_entries_for_time_range

@@ -1,16 +1,16 @@
-<p><%= form.check_box("time_range", options={}, checked_value="1", unchecked_value="0") %></p>
-<div id="time_entry_spent_to" style="display:none">
-  <p><%= form.text_field :spent_to, :size => 10, id: 'time_entry_spent_to_field' %><%= calendar_for('time_entry_spent_to_field') %></p>
-</div>
-
+<p id="time_entry_spent_to_field_wrapper" style="display:none">
+  <%= form.text_field :spent_to, :size => 10, id: 'time_entry_spent_to_field' %>
+  <%= calendar_for('time_entry_spent_to_field') %>
+</p>
 
 <script type='text/javascript'>
 
   $(document).ready(function() {
-   $('#time_entry_time_range').click(function() {
-     $('#time_entry_spent_to').css('display', ($(this).is(':checked') ? 'block' : 'none'));
-     $('#time_entry_spent_to_field').datepicker();
-   });
+    var field = $('#time_entry_spent_to_field_wrapper'),
+          destination = $('#time_entry_spent_on').parent();
+
+      destination.after(field);
+      field.show()
  });
 
 </script>
